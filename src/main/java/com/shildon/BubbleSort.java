@@ -15,6 +15,22 @@ public class BubbleSort extends Sort {
 		if (null == datas) {
 			return;
 		}
+		int len = datas.length;
+		T t;
+		while (len > 0) {
+			int curlen = len;
+			len = 0;
+			for (int i = 1; i < curlen; i++) {
+				if (-1 == comparator.compare(datas[i - 1], datas[i])) {
+					t = datas[i - 1];
+					datas[i - 1] = datas[i];
+					datas[i] = t;
+					len = i;
+				}
+			}
+		}
+		
+		/**
 		boolean change = true;
 		T t;
 		for (int i = datas.length - 1; i > 1 && change; i--) {
@@ -28,6 +44,7 @@ public class BubbleSort extends Sort {
 				}
 			}
 		}
+		**/
 	}
 
 }
