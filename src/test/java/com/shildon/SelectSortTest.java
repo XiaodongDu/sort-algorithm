@@ -17,8 +17,8 @@ public class SelectSortTest {
 	
 	@Test
 	public void test() {
-		Integer[] datas = { 123, 11, 43, 54, 3 };
-		Integer[] expecteds = { 123, 54, 43, 11, 3 };
+		Integer[] datas = { 123, 11, 1, 43, 54, 3 };
+		Integer[] expecteds = { 123, 54, 43, 11, 3, 1 };
 		selectSort.sort(datas, new Comparator<Integer>() {
 
 			@Override

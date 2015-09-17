@@ -10,6 +10,10 @@ import java.util.Comparator;
  */
 public class BubbleSort extends Sort {
 
+	/**
+	 * 实现优化：利用一个len来记录已经排好序的数组的起始位置，
+	 * 这个起始位置同时作为下一次冒泡遍历的结束位置。
+	 */
 	@Override
 	public <T> void sort(T[] datas, Comparator<T> comparator) {
 		if (null == datas) {
