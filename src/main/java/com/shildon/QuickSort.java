@@ -18,35 +18,36 @@ public class QuickSort extends Sort {
 		quickSort(datas, 0, datas.length - 1, comparator);
 	}
 
-	private <T> void quickSort(T[] datas, int s, int t, 
+	private <T> void quickSort(T[] datas, int low, int high, 
 			Comparator<T> comparator) {
 		int pivotloc;
-		if (s < t) {
-			pivotloc = partition(datas, s, t, comparator);
-			quickSort(datas, s, pivotloc - 1, comparator);
-			quickSort(datas, pivotloc + 1, t, comparator);
+		if (low < high) {
+			pivotloc = partition(datas, low, high, comparator);
+			quickSort(datas, low, pivotloc - 1, comparator);
+			quickSort(datas, pivotloc + 1, high, comparator);
 		}
 	}
 	
 	private <T> int partition(T[] datas, int low, int high,
 			Comparator<T> comparator) {
-		T pivotkey = datas[low];
+		T t = datas[low];
 		while (low < high) {
-			while (low < high && (-1 == comparator.compare(datas[high], pivotkey) || 
-					0 == comparator.compare(datas[high], pivotkey))) {
+			while (low < high && (1 == comparator.compare(t, datas[high]) || 
+					0 == comparator.compare(datas[high], t))) {
 				high--;
 			}
 			if (low < high) {
 				datas[low++] = datas[high];
 			}
-			while (low < high && (1 == comparator.compare(datas[high], pivotkey))) {
+			while (low < high && (1 == comparator.compare(datas[low], t) ||
+					0 == comparator.compare(datas[low], t))) {
 				low++;
 			}
 			if (low < high) {
 				datas[high--] = datas[low];
 			}
 		}
-		datas[low] = pivotkey;
+		datas[low] = t;
 		return low;
 	}
 	
