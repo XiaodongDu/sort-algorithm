@@ -1,4 +1,4 @@
-# 用Java实现各种基本排序
+# 用Java实现各种基本排序及简单优化
 根据`compare(T t0, T t1)`返回的结果进行排序，当结果为-1时排序。
 
 ## 冒泡排序
@@ -26,7 +26,7 @@ public <T> void sort(T[] datas, Comparator<T> comparator) {
 }
 ```
 另一种方法，同样设置一个标志域来判断是否需要继续冒泡，但这种做法会多出1趟没必要的冒泡过程。
-```
+```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
 	boolean change = true;
 	T t;
