@@ -2,7 +2,7 @@
 根据`compare(T t0, T t1)`返回的结果进行排序，当结果为-1时排序。
 
 ## 冒泡排序
-`java
+```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
 	if (null == datas) {
 		return;
@@ -23,9 +23,9 @@ public <T> void sort(T[] datas, Comparator<T> comparator) {
 	}
 	
 }
-`
+```
 另一种方法：
-`
+```
 boolean change = true;
 T t;
 for (int i = datas.length - 1; i > 1 && change; i--) {
@@ -39,4 +39,4 @@ for (int i = datas.length - 1; i > 1 && change; i--) {
 		}
 	}
 }
-`
+```
