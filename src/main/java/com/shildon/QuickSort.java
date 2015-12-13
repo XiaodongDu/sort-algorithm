@@ -12,7 +12,7 @@ public class QuickSort extends Sort {
 
 	@Override
 	public <T> void sort(T[] datas, Comparator<T> comparator) {
-		if (null == datas) {
+		if (null == datas || null == comparator) {
 			return;
 		}
 		quickSort(datas, 0, datas.length - 1, comparator);

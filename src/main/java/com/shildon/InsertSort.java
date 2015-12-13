@@ -16,6 +16,9 @@ public class InsertSort extends Sort {
 	 */
 	@Override
 	public <T> void sort(T[] datas, Comparator<T> comparator) {
+		if (null == comparator || null == comparator) {
+			return;
+		}
 		T t;
 		int j;
 		for (int i = 0; i < datas.length - 1; i++) {

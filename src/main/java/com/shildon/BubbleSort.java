@@ -16,7 +16,7 @@ public class BubbleSort extends Sort {
 	 */
 	@Override
 	public <T> void sort(T[] datas, Comparator<T> comparator) {
-		if (null == datas) {
+		if (null == datas || null == comparator) {
 			return;
 		}
 		int len = datas.length;

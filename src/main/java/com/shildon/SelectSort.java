@@ -17,14 +17,14 @@ public class SelectSort extends Sort {
 	 */
 	@Override
 	public <T> void sort(T[] datas, Comparator<T> comparator) {
-		if (null == datas) {
+		if (null == datas || null == comparator) {
 			return;
 		}
 		int len = datas.length;
 		T t;
 		for (int i = 0; i < len / 2; i++) {
 			int max = i;
-			int min = i;
+			int min = len - i - 1;
 			for (int j = i + 1; j < len - i; j++) {
 				if (-1 == comparator.compare(datas[max], datas[j])) {
 					max = j;

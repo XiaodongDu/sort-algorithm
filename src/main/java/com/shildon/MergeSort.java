@@ -14,7 +14,7 @@ public class MergeSort extends Sort {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> void sort(T[] datas, Comparator<T> comparator) {
-		if (null == datas) {
+		if (null == datas || null == comparator) {
 			return;
 		}
 		T[] sortedData = (T[])Array.newInstance(datas[0].getClass(), datas.length);
