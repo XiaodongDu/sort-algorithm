@@ -2,7 +2,7 @@
 根据`compare(T t0, T t1)`返回的结果进行排序，当结果为-1时排序。
 
 ## 冒泡排序
-优化思路：因为后面的元素在每一趟冒泡过程都至少会有一个被排好序，所以我们可以设置一个标志域来标志每一趟排完序后的坐标，利用这个标志域推出循环。
+优化思路：因为后面的元素在每一趟冒泡过程都*至少*会有一个被排好序，所以我们可以设置一个标志域len来标志每一趟那些排好序后的坐标，利用这个标志域退出循环。
 ```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
 	if (null == datas || null == comparator) {
@@ -25,7 +25,7 @@ public <T> void sort(T[] datas, Comparator<T> comparator) {
 	
 }
 ```
-另一种方法，同样设置一个标志域来判断是否需要继续冒泡，但这种做法会多出1趟没必要的冒泡过程。
+另一种方法，同样设置一个标志域change来判断是否需要继续冒泡，但这种做法会多出1趟没必要的冒泡过程。
 ```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
 	boolean change = true;
@@ -117,6 +117,87 @@ private <T> int binaryFind(T t, T[] datas, int low, int high, Comparator<T> comp
 		return binaryFind(t, datas, low, mid, comparator);	//注意这里不用-1
 	} else {
 		return mid + 1;	//为了保证稳定性
+	}
+}
+```
+
+### 快速排序
+```java
+private <T> void quickSort(T[] datas, int low, int high, 
+		Comparator<T> comparator) {
+	int pivotloc;
+	if (low < high) {
+		pivotloc = partition(datas, low, high, comparator);
+		quickSort(datas, low, pivotloc - 1, comparator);
+		quickSort(datas, pivotloc + 1, high, comparator);
+	}
+}
+
+private <T> int partition(T[] datas, int low, int high,
+		Comparator<T> comparator) {
+	T t = datas[low];
+	while (low < high) {
+		while (low < high && (1 == comparator.compare(t, datas[high]) || 
+				0 == comparator.compare(datas[high], t))) {
+			high--;
+		}
+		if (low < high) {
+			datas[low++] = datas[high];
+		}
+		while (low < high && (1 == comparator.compare(datas[low], t) ||
+				0 == comparator.compare(datas[low], t))) {
+			low++;
+		}
+		if (low < high) {
+			datas[high--] = datas[low];
+		}
+	}
+	datas[low] = t;
+	return low;
+}
+```
+
+## 合并排序
+```java
+private <T> void mSort(T[] oldData, T[] sortedData, Comparator<T> comparator,
+		int i, int low, int high) {
+	if (low == high) {
+		if (i % 2 == 1) {
+			sortedData[low] = oldData[low];
+		}
+	} else {
+		int mid = (low + high) / 2;
+		i++;
+		mSort(oldData, sortedData, comparator, i, low, mid);
+		mSort(oldData, sortedData, comparator, i, mid + 1, high);
+		if (i % 2 == 0) {
+			mergeSort(oldData, sortedData, comparator, low, mid, high);
+		} else {
+			mergeSort(sortedData, oldData, comparator, low, mid, high);
+		}
+	}
+}
+
+private <T> void mergeSort(T[] oldData, T[] sortedData, Comparator<T> comparator,
+		int low, int mid, int high) {
+	int i, j, k;
+	//i是对归并后的迭代索引,low和j是另外两个.
+	for (i = low, j = mid + 1; low <= mid && j <= high; i++) {
+		if (1 == comparator.compare(oldData[low], oldData[j])) {
+			sortedData[i] = oldData[low++];
+		} else {
+			sortedData[i] = oldData[j++];
+		}
+	}
+	if (low <= mid) {
+		for (k = 0; k <= mid - low; k++) {
+			sortedData[i + k] = oldData[low + k];
+		}
+	}
+	if (j <= high) {
+		for (k = 0; k <= high - j; k++) {
+			sortedData[i + k] = oldData[j + k];
+		}
 	}
 }
 ```
