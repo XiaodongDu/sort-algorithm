@@ -3,7 +3,7 @@ package com.shildon;
 import java.util.Comparator;
 
 /**
- * 
+ * 选择排序
  * @author shildon<shildondu@gmail.com>
  * @date Aug 15, 2015 11:03:42 PM
  *
@@ -38,6 +38,7 @@ public class SelectSort extends Sort {
 				datas[i] = datas[max];
 				datas[max] = t;
 			}
+			// 注意
 			if (min == i) {
 				min = max;
 			}

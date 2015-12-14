@@ -3,7 +3,7 @@ package com.shildon;
 import java.util.Comparator;
 
 /**
- * The abstract sort class.
+ * 抽象排序类
  * @author shildon<shildondu@gmail.com>
  * @date Aug 15, 2015 8:59:02 PM
  *

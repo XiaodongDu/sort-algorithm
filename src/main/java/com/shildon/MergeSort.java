@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.Comparator;
 
 /**
- * 
+ * 合并排序
  * @author shildon<shildondu@gmail.com>
  * @date Aug 15, 2015 10:31:24 PM
  *

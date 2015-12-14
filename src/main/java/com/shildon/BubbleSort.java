@@ -3,7 +3,7 @@ package com.shildon;
 import java.util.Comparator;
 
 /**
- * 
+ * 冒泡排序
  * @author shildon<shildondu@gmail.com>
  * @date Aug 15, 2015 9:12:06 PM
  *
