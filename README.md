@@ -2,7 +2,7 @@
 根据`compare(T t0, T t1)`返回的结果进行排序，当结果为-1时排序。
 
 ## 冒泡排序
-优化思路：因为后面的元素在每一趟冒泡过程都*至少*会有一个被排好序，所以我们可以设置一个标志域len来标志每一趟那些排好序后的坐标，利用这个标志域退出循环。
+优化思路：因为后面的元素在每一趟冒泡过程都**至少**会有一个被排好序，所以我们可以设置一个标志域len来标志每一趟那些排好序后的坐标，利用这个标志域退出循环。
 ```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
 	if (null == datas || null == comparator) {
@@ -273,4 +273,4 @@ private <T> T removeFirstHeap(T[] datas, Comparator<T> comparator) {
 
 ## 比较
 经不专业测试，上述算法的效率比较结果如下：
-heap sort > quick sort >= merge sort > insert sort > select sort > bubble sort
+**heap sort** > **quick sort** >= **merge sort** > **insert sort** > **select sort** > **bubble sort**
