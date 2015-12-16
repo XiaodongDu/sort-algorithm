@@ -270,3 +270,7 @@ private <T> T removeFirstHeap(T[] datas, Comparator<T> comparator) {
 	return first;
 }
 ```
+
+## 比较
+经不专业测试，上述算法的效率比较结果如下：
+heap sort > quick sort >= merge sort > insert sort > select sort > bubble sort
