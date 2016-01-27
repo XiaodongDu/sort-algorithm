@@ -1,6 +1,13 @@
 # 用Java实现各种基本排序及简单优化
 根据`compare(T t0, T t1)`返回的结果进行排序，当结果为-1时排序。
 
+* 冒泡排序
+* 选择排序
+* 插入排序
+* 快速排序
+* 合并排序
+* 堆排序
+
 ## 冒泡排序
 优化思路：因为后面的元素在每一趟冒泡过程都**至少**会有一个被排好序，所以我们可以设置一个标志域len来标志每一趟那些排好序后的坐标，利用这个标志域退出循环。
 ```java
@@ -122,6 +129,7 @@ private <T> int binaryFind(T t, T[] datas, int low, int high, Comparator<T> comp
 ```
 
 ## 快速排序
+基于分治思想，先分出不同的排序区域，再治之。
 ```java
 private <T> void quickSort(T[] datas, int low, int high, 
 		Comparator<T> comparator) {
@@ -158,6 +166,7 @@ private <T> int partition(T[] datas, int low, int high,
 ```
 
 ## 合并排序
+同样是基于分治。
 ```java
 private <T> void mSort(T[] oldData, T[] sortedData, Comparator<T> comparator,
 		int i, int low, int high) {
