@@ -9,6 +9,12 @@
 * 堆排序
 
 ## 冒泡排序
+
+最差时间复杂度：O(n^2)
+最优时间复杂度：O(n)
+平均时间复杂度：O(n^2)
+最差空间复杂度：O(n)
+
 优化思路：因为后面的元素在每一趟冒泡过程都**至少**会有一个被排好序，所以我们可以设置一个标志域len来标志每一趟那些排好序后的坐标，利用这个标志域退出循环。
 ```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
@@ -52,6 +58,12 @@ public <T> void sort(T[] datas, Comparator<T> comparator) {
 ```
 
 ## 选择排序
+
+最差时间复杂度：O(n^2)
+最优时间复杂度：O(n^2)
+平均时间复杂度：O(n^2)
+最差空间复杂度：O(n)
+
 优化思路：采用双向选择排序的思路，在一次选择比较中同时选择出大值和最小值。注意这样子的话最外层循环只需要遍历数组的长度/2次，需要注意的是如果最小值索引min刚好等于i，那么就要判断i是否在max交换时被交换到max了。
 ```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
@@ -90,6 +102,12 @@ public <T> void sort(T[] datas, Comparator<T> comparator) {
 ```
 
 ## 插入排序
+
+最差时间复杂度：O(n^2)
+最优时间复杂度：O(n)
+平均时间复杂度：O(n^2)
+最差空间复杂度：O(n)
+
 优化思路：既然直接插入排序中要将有序区中的部分元素后移一位，那么我们就可以用二分查找算法找到这个“部分元素”的临界值。
 ```java
 public <T> void sort(T[] datas, Comparator<T> comparator) {
@@ -129,6 +147,12 @@ private <T> int binaryFind(T t, T[] datas, int low, int high, Comparator<T> comp
 ```
 
 ## 快速排序
+
+最差时间复杂度：O(n^2)
+最优时间复杂度：O(nlogn)
+平均时间复杂度：O(nlogn)
+最差空间复杂度：根据实现的方式不同而不同
+
 基于分治思想，先分出不同的排序区域，再治之。
 ```java
 private <T> void quickSort(T[] datas, int low, int high, 
@@ -166,6 +190,12 @@ private <T> int partition(T[] datas, int low, int high,
 ```
 
 ## 合并排序
+
+最差时间复杂度：O(nlogn)
+最优时间复杂度：O(n)
+平均时间复杂度：O(nlogn)
+最差空间复杂度：O(n)
+
 同样是基于分治。
 ```java
 private <T> void mSort(T[] oldData, T[] sortedData, Comparator<T> comparator,
@@ -212,6 +242,12 @@ private <T> void mergeSort(T[] oldData, T[] sortedData, Comparator<T> comparator
 ```
 
 ## 堆排序
+
+最差时间复杂度：O(nlogn)
+最优时间复杂度：O(nlogn)
+平均时间复杂度：O(nlogn)
+最差空间复杂度：O(n)
+
 因为堆顶节点肯定是优先级最高的节点，所以可以不断地删除顶点，再筛选来得到排序。
 ```java
 private int length;
